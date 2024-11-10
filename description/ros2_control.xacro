@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+    <xacro:macro name="ros2_control" params="prefix">
+        <!-- Hardware interface for robot's controller -->
+        <ros2_control name="GazeboSystem" type="system">
+            <hardware>
+            <!-- Hardware interface will be Gazebo -->
+                <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+            </hardware>
+            
+            <!-- Joint 1 can be controlled -->
+            <joint name="${prefix}shoulder_yaw_joint">
+                <!-- Joint 1's control variable is position -->
+                <command_interface name="position">
+                    <param name="max">3.1416</param>
+                    <param name="min">-3.1416</param>
+                </command_interface>
+                <!-- Joint 1's position can be read-->
+                <state_interface name="position"/>
+                <!-- Joint 1's velocity can be read-->
+                <state_interface name="velocity"/>
+                <param name="initial_position">0.0</param>  
+                </joint>
+            
+            <!-- The same goes for every joint -->
+            <joint name="${prefix}shoulder_pitch_joint">
+                <command_interface name="position">
+                    <param name="max">1.5708</param>
+                    <param name="min">-1.5708</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+                <param name="initial_position">0.0</param>  
+            </joint>
+
+            <joint name="${prefix}elbow_pitch_joint">
+                <command_interface name="position">
+                    <param name="max">1.5708</param>
+                    <param name="min">-1.5708</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+                <param name="initial_position">0.0</param>  
+            </joint>
+
+            <joint name="${prefix}wrist_pitch_joint">
+                <command_interface name="position">
+                    <param name="max">1.9</param>
+                    <param name="min">-1.7</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+                <param name="initial_position">0.0</param>  
+            </joint>
+
+            <joint name="${prefix}wrist_roll_joint">
+                <command_interface name="position">
+                    <param name="max">3.1416</param>
+                    <param name="min">-3.1416</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+                <param name="initial_position">0.0</param>  
+            </joint>
+        </ros2_control>
+        
+        <!-- Load robot's controller -->
+        <gazebo>
+            <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">  
+                <robotNamespace>phantomx_reactor</robotNamespace>
+                <parameters>$(find phantomx_reactor)/config/controllers.yaml</parameters>
+            </plugin>
+        </gazebo>
+    </xacro:macro>
+</robot >

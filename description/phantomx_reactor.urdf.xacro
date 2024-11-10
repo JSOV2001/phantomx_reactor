@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="phantomx_reactor" >
+    <xacro:include filename="$(find phantomx_reactor)/description/phantomx_reactor_core_wrist.xacro" />
+    <xacro:include filename="$(find phantomx_reactor)/description/ros2_control.xacro" />
+    <xacro:include filename="$(find phantomx_reactor)/description/gazebo_references.xacro" />
+    
+    <link name="base_footprint">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+    </link>
+    
+	<xacro:phantomx_reactor_wrist prefix="" parent="base_footprint">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+	</xacro:phantomx_reactor_wrist>
+
+	<xacro:gazebo_references prefix=""/>
+    
+	<xacro:ros2_control prefix=""/>
+</robot>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+	<xacro:macro name="gazebo_references" params="prefix">
+		<gazebo reference="${prefix}base_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}shoulder_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}bicep_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}forearm_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}wrist_1_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}wrist_2_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}gripper_guide_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}gripper_right_link">
+			<material>Gazebo/Black</material>
+		</gazebo>
+
+		<gazebo reference="${prefix}gripper_left_link">
+			<material>Gazebo/Black</material>
+		</gazebo>	
+	</xacro:macro>
+</robot>
